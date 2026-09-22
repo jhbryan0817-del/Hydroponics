@@ -22,7 +22,8 @@ The PH8012 and WTS probe prices are quote caps rather than verified Taobao check
 
 ## Repository map
 
-- `BOM.csv` - selected parts, quantities, budget caps, source links, mechanical interfaces, and freeze status.
+- `BOM.md` - readable BOM organized as categorized charts with prices, dimensions, and status.
+- `BOM.csv` - machine-readable BOM for calculations and future automation.
 - `COMPONENT_SELECTION.md` - decisions, exact sensor variants, electronics strategy, and alternatives.
 - `SENSOR_INTERFACE_SPEC.md` - binding mechanical interface for the pH and EC cartridges.
 - `MECHANICAL_DESIGN_PLAN.md` - Fusion assembly structure, parameters, tolerances, sequence, and acceptance checks.
