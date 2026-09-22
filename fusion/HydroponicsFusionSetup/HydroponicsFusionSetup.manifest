@@ -1,0 +1,9 @@
+{
+  "autodeskProduct": "Fusion360",
+  "type": "script",
+  "author": "Hydroponics project",
+  "description": "Creates the parameter and component skeleton for the mechanical-first floating controller.",
+  "version": "0.2.0",
+  "runOnStartup": false,
+  "supportedOS": "windows|mac"
+}

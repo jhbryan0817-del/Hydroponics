@@ -1,0 +1,9 @@
+bom_id,manufacturer,model,variant,measured_mass_g,overall_length_mm,max_width_or_diameter_mm,max_height_mm,thread_standard,thread_major_diameter_mm,usable_thread_length_mm,cable_diameter_mm,cable_length_mm,connector,mount_hole_diameter_mm,mount_hole_centers_mm,measured_by,date,notes
+PH-PROBE-01,,,,,,,,,,,,,,,,,,
+EC-PROBE-01,,,,,,,,,,,,,,,,,,
+ADAPT-PH-01,,,,,,,,,,,,,,,,,,
+ADAPT-EC-01,,,,,,,,,,,,,,,,,,
+DISP-01,,,,,,,,,,,,,,,,,,
+PUMP-01,,,,,,,,,,,,,,,,,,
+VALVE-01,,,,,,,,,,,,,,,,,,
+HOLDER-01,,,,,,,,,,,,,,,,,,

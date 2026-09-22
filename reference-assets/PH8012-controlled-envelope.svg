@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220mm" height="70mm" viewBox="0 0 220 70">
+  <rect width="220" height="70" fill="white"/>
+  <g stroke="#111" fill="none" stroke-width="0.6">
+    <rect x="25" y="21.3" width="161" height="27.4"/>
+    <rect x="25" y="18" width="32" height="34" stroke-dasharray="2 1"/>
+    <line x1="25" y1="57" x2="186" y2="57"/>
+    <line x1="25" y1="54" x2="25" y2="60"/>
+    <line x1="186" y1="54" x2="186" y2="60"/>
+    <line x1="196" y1="21.3" x2="196" y2="48.7"/>
+    <line x1="193" y1="21.3" x2="199" y2="21.3"/>
+    <line x1="193" y1="48.7" x2="199" y2="48.7"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="4" fill="#111">
+    <text x="25" y="9">PH8012 CONTROLLED PROXY - NOT A MANUFACTURING DRAWING</text>
+    <text x="78" y="64">161 mm published overall envelope</text>
+    <text x="199" y="36">27.4 mm</text>
+    <text x="27" y="16">3/4 NPT zones are 22 mm long in manufacturer drawing</text>
+  </g>
+</svg>

@@ -1,87 +1,120 @@
 # Component selection
 
-Prices are a 2026-09-22 snapshot. Taobao/Tmall links point to indexed mirrors because direct `taobao.com` interaction was blocked by the browser safety layer. No order was placed.
+This revision treats the sensor mounting system as the product-defining hardware. Prices are planning values from 2026-09-22. No purchase has been made.
+
+## Sensor architecture
+
+The sensing chain has two deliberately separate layers:
+
+1. a replaceable, threaded process probe that defines the wet mechanical interface; and
+2. a dry signal-conditioning board that converts the electrochemical signal for the ESP32.
+
+The enclosure is based on the process probes. The interface boards sit on adjustable rails and may change later without changing the wet shell.
+
+### PH-PROBE-01 - BOQU PH8012
+
+Selected variant:
+
+- model PH8012;
+- 0-14 pH;
+- upper and lower 3/4-inch NPT process threads;
+- BNC (Q9) connector option, which uses the pH signal without the optional temperature conductors;
+- direct low-noise coaxial cable;
+- request a 1 m cable rather than the standard long industrial cable.
+
+The manufacturer drawing gives a 161 mm overall length, 27.4 mm maximum main-body diameter, 25.6 mm tip housing, 3.5 mm cable, and two 22 mm-long 3/4-inch NPT zones. The upper and lower pipe threads allow the probe to be installed without a separate laboratory clamp. It is mechanically more representative of a glass laboratory probe held by an improvised clip.
+
+The target Taobao price is capped at CNY 90. A low advertised quote is not accepted without a photo of the exact variant, current outline drawing, connector, cable length, and confirmation that the quoted item is the complete electrode.
+
+### PH-FE-01 - DFRobot SEN0161-V2 interface
+
+The 42 x 32 mm DFRobot V2 board is retained because it has a documented 3.3-5.5 V input, 0-3.0 V output, BNC probe input, and two-point calibration workflow. The kit includes a laboratory probe; that probe is retained only as a diagnostic spare.
+
+The PH8012/BNC combination still requires a bench compatibility check. A common BNC connector does not by itself prove correct reference construction, cable wiring, or calibration behavior. The mechanical design remains valid if the interface board changes.
+
+### EC-PROBE-01 - Winters WTS-SS-1-1-1401
+
+Selected variant:
+
+- exact model WTS-SS-1-1-1401;
+- two-electrode conductivity sensor;
+- K=1 cell constant;
+- published range 0.1-20,000 uS/cm;
+- 1/2-inch NPT process connection;
+- 316 stainless sensing body;
+- integrated Pt1000;
+- request a 1 m cable instead of the standard 10 m cable.
+
+The family data publishes a 13 mm probe stem and both 60 and 120 mm stem lengths, but it does not map those lengths to a complete threaded-outline drawing. Until the seller supplies the drawing for the exact code, Fusion must use a conservative 30 x 180 mm total envelope and 200 mm service-extraction envelope.
+
+The target Taobao quote is capped at CNY 180. If that cap cannot be met, select another K=1, 0-20 mS/cm process cell with a 1/2-inch or 3/4-inch NPT connection and create only a new cartridge insert. Do not remodel the float body.
+
+### EC-FE-01 - Your Cee K=1 analog EC kit
+
+The low-cost board remains in the budget for bench validation. Its stated range is 0-20 mS/cm and its analog output is 0-3.4 V. Route the output through the documented divider before an ESP32 ADC1 input.
+
+The WTS probe is not assumed plug-compatible. Before measurement work begins, verify:
+
+- two-electrode excitation method and frequency;
+- acceptable cell constant;
+- electrode connection and shield arrangement;
+- whether the Pt1000 can be read by the board or needs a separate converter;
+- calibration across at least two standards.
+
+The included EC probe is retained as a diagnostic spare. The electronics tray reserves the same 48 x 38 x 24 mm board envelope whether this board is kept or replaced.
+
+## Why NPT process probes were selected
+
+PG13.5 remains a good process-sensor standard, but verified low-cost PG13.5 EC probes consumed too much of the US$150 budget. A known PG13.5 K=1 probe was listed at EUR 85.20 before its cable and interface electronics. The selected NPT probes keep the process-style threaded mounting while preserving enough budget for the controller, display, pump, valves, battery system, and interface boards.
+
+The cartridge system isolates this choice. A later PG13.5 probe requires a different CNY 10-20 insert/cartridge, not a different float body or electronics tub.
 
 ## Control and display
 
-### CTRL-01 — Ai-Thinker NodeMCU-32S, CP2102, 38-pin
+### CTRL-01 - Ai-Thinker NodeMCU-32S
 
-This is a documented ESP32 board with enough GPIO for the display, two analog channels, temperature probe, pump, and three valves. The Ai-Thinker dimensional drawing gives a 48.26 x 25.40 mm PCB. Because Taobao sellers mix CP2102 and CH340 revisions under one listing, the enclosure reserve is 55 x 28 x 14 mm and the exact seller photo must be locked before detailed CAD.
+The 38-pin CP2102 NodeMCU-32S has enough GPIO for the display, two analog channels, pump, and three valves. The published PCB is 48.26 x 25.40 mm. Fusion uses 55 x 28 x 14 mm to include headers and connector variation. Keep the ESP32 antenna at least 10 mm from batteries, metal fittings, cable shields, and copper pours.
 
-The lower-cost NodeMCU-32S preserves the measurement budget. The official ESP32-DevKitC Taobao result was roughly CNY 79–82, while this selected exact-title result is CNY 23.86.
+### DISP-01 - MSP2807 2.8-inch SPI TFT
 
-### DISP-01 — MSP2807 2.8-inch SPI TFT
+The ILI9341 SPI module uses an 86 x 50 mm PCB and a 57.6 x 43.2 mm active area. It sits behind a separate clear polycarbonate window. The bezel opening remains parameterized until the received glass and viewing area are measured.
 
-The 2.8-inch ILI9341 module is large enough to show pH, EC, temperature, dosing state, and battery status without making the float excessively wide. The module uses a 50 x 86 mm PCB and a 43.2 x 57.6 mm active display area. The later enclosure must expose only a clear window; the PCB and card slot remain inside the dry zone.
+## Fluid system
 
-Select the SPI ILI9341 variant. A resistive-touch layer is acceptable but is not required by iteration 1.
+### PUMP-01 - Conjoin CJWP12-AB05A
 
-## Measurement chain
+The 5 V AB05A pump is retained. Published flow is 130-170 mL/min at less than 180 mA. It is mounted after the sensor chamber:
 
-### PH-01 — DFRobot SEN0161-V2
+`reservoir inlet -> low-pressure sensor chamber -> sample pump -> submerged return`
 
-The SEN0161-V2 was chosen over generic PH4502C boards because it accepts 3.3–5.5 V, outputs 0–3.0 V, includes two-point calibration buffers, and has published dimensional data. Its board is 42 x 32 mm and its stated accuracy is ±0.1 pH at 25 °C.
+This places the sensor chamber under slight suction during a sample cycle. A sealing defect is less likely to push water toward the dry enclosure. The pump remains in an elastomer cradle and is used intermittently.
 
-DFRobot explicitly limits this kit to laboratory-style measurement and warns that the probe may drift during extended measurement. The prototype will use repeated cycles:
+### VALVE-01 - three normally-closed miniature valves
 
-1. run the sample pump to flush the chamber;
-2. stop the pump to remove flow and electrical noise;
-3. wait for the pH probe to settle;
-4. sample pH, EC, and temperature;
-5. drain or refresh the chamber;
-6. sleep until the next cycle.
+The three 6 V valves are kept because the requested first prototype specifies valves. Each occupies an independent pocket in a removable cassette. The three fluid paths never merge inside the enclosure.
 
-If continuous 24/7 measurement becomes a hard requirement, move to an industrial pH kit such as SEN0169-V2 and revise the budget.
+The concentrate reservoirs remain external, so their three supply tubes form a tether. The valve cassette includes a structural strain-relief point and a separate tether eye; the valve barbs do not carry float-drift loads. Gravity head is still required because a valve does not pump liquid.
 
-### EC-01 — Your Cee K=1 analog EC kit
+This revision intentionally does not make chemical compatibility a design-freeze condition. Mechanical fit, service clearance, tube routing, and leak containment are the current gates. Compatibility testing remains necessary before concentrates are used.
 
-The selected EC kit covers 0–20 mS/cm and recommends 1–15 mS/cm, a practical range for hydroponic nutrient solutions. The board is reported as 42 x 32 mm, the probe is about 172 mm long, and the analog output is 0–3.4 V.
+## Power system
 
-The 3.4 V maximum is above the ESP32 input rail. Route AO through a 10 kΩ series resistor and 100 kΩ resistor to ground, then add 100 nF to ground at the ADC1 pin. This scales 3.4 V to about 3.09 V. Use an ADC1 pin because ESP32 ADC2 conflicts with Wi-Fi. Calibration requires 1413 µS/cm and 12.88 mS/cm standards.
+Two matched Lishen LR1865SK cells form a 2S pack. A covered holder beneath the top battery hatch allows removal without an external charging port. A 2S protection board remains inside the unit. Two MP1584 modules provide 5 V and 6 V rails.
 
-### TEMP-01 — waterproof DS18B20
+The battery holder, pump, and valves are placed low and near the centerline. Their mass offsets the top display and keeps the center of gravity below the design waterline.
 
-Temperature is a supporting input even though the product UI exposes pH and EC. Both measurements vary with temperature, so the control logic must retain the raw temperature and the compensated values. Reserve a 6 mm diameter by 50 mm probe envelope until the seller confirms the supplied probe.
+## Changes from the first BOM
 
-## Fluid handling
+- Replaced both laboratory-style probe envelopes with threaded industrial process probes.
+- Added purchased female threaded inserts and removable sensor cartridges.
+- Moved the sample pump downstream of the measurement chamber.
+- Removed the separate DS18B20 penetration; the EC probe includes Pt1000 and the shell keeps an internal electronics allowance for its converter.
+- Removed material-specific chemical acceptance as a CAD blocker.
+- Increased the budget from US$100 to US$150 and assigned explicit quote caps to the two process probes.
+- Added a Fusion parameter/setup package and sensor interface control document.
 
-### PUMP-01 — Conjoin CJWP12-AB05A
+## Deliberate limitations
 
-The exact selected pump is the 5 V AB05A variant, not the lower-flow AA variant. Manufacturer data gives 130–170 mL/min, less than 180 mA, and less than 0.9 W. The life test is specified at 10 seconds on / 10 seconds off; this supports cyclic sampling and does not support assuming indefinite continuous operation.
+The mechanical design can proceed before electrical compatibility is proved. Automated dosing cannot. The first physical build must use the process probes and purchased thread inserts for fit work, while the included kit probes are used to bring up the electronics separately.
 
-### VALVE-01 — three 6 V normally-closed miniature valves
-
-These valves satisfy the count, size, and price targets. They rely on gravity head from three external concentrate reservoirs. Firmware must open only one valve at a time.
-
-The listing does not publish trustworthy wetted-material data. Until the seller confirms the body, seal, and armature materials, these valves are limited to water and diluted-nutrient trials. Concentrated acid or base can attack common seals and metals. Passing criteria for each actual concentrate are in `PROCUREMENT_CHECKLIST.md`.
-
-If gravity feed is not possible or the valves fail compatibility testing, replace the removable valve cassette with three small peristaltic dosing pumps. The sample pump must never be reused for dosing because shared plumbing would cross-contaminate concentrates and make dose volume unpredictable.
-
-### Tubes and ports
-
-Use 2 x 4 mm silicone tube for the reservoir sample loop. Use 2 x 4 mm PTFE for the three long concentrate runs, with short FKM sleeves only where a soft connection to a 3 mm barb is required. The current architecture needs eight tube interfaces: sample inlet, sample outlet, three concentrate inlets, and three dosing outlets.
-
-## Power and switching
-
-Two matched Lishen LR1865SK cells form a 2S pack: 7.4 V nominal, 8.4 V full, and roughly 19.2 Wh nominal. A covered 2S holder lets the user remove both cells without exposing a charging connector on the wet device. The cells stay as a labeled matched pair and are charged together in the external Lii-202.
-
-A 2S 5 A protection board provides in-device over-current and under-voltage protection. Two MP1584 modules create:
-
-- 5.0 V for the ESP32 VIN, display, sensors, and sample pump;
-- 6.0 V for the valve coils.
-
-The four-channel MOSFET board controls the pump and three valves. Add a reverse-biased flyback diode across every inductive load unless the received module visibly includes the diodes.
-
-The nominal energy estimate is 19.2 Wh. With conversion losses and a 20% reserve, about 15 Wh is usable. A continuously lit display plus continuous sampling is expected to run for roughly 5–7 hours. Cyclic sampling, display dimming, and Wi-Fi sleep should extend this to roughly 8–12 hours. These are engineering estimates; final runtime must be measured on the assembled hardware.
-
-## Alternatives rejected for iteration 1
-
-| Alternative | Reason not selected |
-|---|---|
-| DFRobot industrial pH / EC kits | Better for 24/7 use but exceed the complete US$100 budget. |
-| DFRobot SEN0244 TDS kit | 0–1000 ppm is too narrow for many hydroponic solutions and is not a direct wide-range EC measurement. |
-| Three peristaltic dosing pumps | Better metering and chemical isolation, but larger and materially more expensive. Retained as the preferred upgrade. |
-| Chemical-rated pinch valves | Ideal wetted path, but three units alone consume or exceed the hardware budget. |
-| Official ESP32-DevKitC | Mechanically well documented but approximately CNY 55 more than the selected NodeMCU board. |
-| Onboard chemical reservoirs | They increase size, weight, spill risk, and the number of service openings on a floating device. |
-
+No trustworthy exact STEP model was found for the PH8012 or WTS-SS-1-1-1401. Fusion should use the controlled proxy envelopes until the received parts are measured.
