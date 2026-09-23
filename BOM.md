@@ -83,9 +83,9 @@ The process probes above control the enclosure geometry. The laboratory-style pr
 
 ## Purchase controls
 
-- PH8012 delivered-price cap: **CNY 90**.
+- PH8012 delivered-price target: **CNY 90**; current external listings suggest this is probably too low for the exact BOQU model.
 - WTS-SS-1-1-1401 delivered-price cap: **CNY 180**.
-- Complete planning ceiling: **CNY 999.57 / US$149.24**.
+- Complete planning ceiling: **CNY 999.57 / US$149.24**; this is not a validated purchasable cart.
 - Confirm the exact probe, connector, cable length, thread, and drawing before ordering.
 - See [PROCUREMENT_PLAN.md](PROCUREMENT_PLAN.md) for Taobao search terms, seller questions, and receiving checks.
 - `BOM.csv` remains the machine-readable source for calculations and future automation.
