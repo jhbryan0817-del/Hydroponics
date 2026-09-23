@@ -18,7 +18,7 @@ The initial Fusion model can now start from controlled thread interfaces and con
 
 The planning total is **CNY 999.57 / US$149.24**, using **1 USD = 6.6977 CNY** for continuity with the first research pass. This includes a CNY 75 delivery allowance and basic mechanical hardware. No purchase was made.
 
-The PH8012 and WTS probe prices are quote caps rather than verified Taobao checkout prices because direct Taobao automation is blocked by the browser safety layer. The procurement plan requires rejecting or re-quoting those lines if the exact requested variants exceed their caps. The mechanical adapter cartridges allow an equivalent threaded sensor to be substituted without remodeling the float body.
+The PH8012 and WTS probe prices are quote caps rather than verified Taobao checkout prices because direct Taobao automation is blocked by the browser safety layer. In fact, **no BOM line has been verified in a live Taobao checkout**. Some commodity parts have third-party evidence of Taobao-origin listings; others are manufacturer-selected models or generic allowances. The procurement plan requires live seller and variant verification before ordering. The mechanical adapter cartridges allow an equivalent threaded sensor to be substituted without remodeling the float body.
 
 ## Repository map
 
@@ -30,6 +30,7 @@ The PH8012 and WTS probe prices are quote caps rather than verified Taobao check
 - `PROCUREMENT_PLAN.md` - staged Taobao search plan, seller questions, quote limits, and receiving inspection.
 - `DESIGN_RISKS.md` - open mechanical and integration risks with concrete closure tests.
 - `SOURCE_INDEX.md` - research provenance and reference asset inventory.
+- `TAOBAO_AVAILABILITY_AUDIT.md` - row-by-row explanation of exact-model evidence, Taobao discoverability, and unresolved procurement checks.
 - `fusion/` - Fusion parameter CSV, setup script, and CAD-start instructions.
 - `reference-assets/` - manufacturer manuals, dimensional references, and controlled envelope drawings.
 

@@ -18,7 +18,7 @@ Do not compensate for an over-cap sensor by deleting its thread insert, gasket, 
 
 ## Taobao access note
 
-The signed-in Chrome tab is visible, but automated access to `taobao.com` is blocked by the browser site-safety policy. Publicly indexed listings and manufacturer documents were used for planning. The exact cart variant, seller, delivery cost, and current checkout price therefore require a final human verification in Taobao.
+The signed-in Chrome tab is visible, but automated access to `taobao.com` is blocked by the browser site-safety policy. Publicly indexed listings and manufacturer documents were used for planning. The exact cart variant, seller, delivery cost, and current checkout price therefore require a final human verification in Taobao. As of 2026-09-23, the number of BOM lines verified in a live Taobao page or cart is **zero**. See `TAOBAO_AVAILABILITY_AUDIT.md` for the row-by-row audit.
 
 ## Purchase sequence
 

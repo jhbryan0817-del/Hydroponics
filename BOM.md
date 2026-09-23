@@ -1,6 +1,6 @@
 # Bill of materials
 
-This is the readable version of `BOM.csv`. Prices are the 2026-09-22 planning snapshot. No purchase has been made.
+This is the readable version of `BOM.csv`. Prices are the 2026-09-22 planning snapshot. No purchase has been made. **No line has been verified in a live Taobao product page or checkout.** See [TAOBAO_AVAILABILITY_AUDIT.md](TAOBAO_AVAILABILITY_AUDIT.md) for the component-by-component evidence and limitations.
 
 ## Budget summary
 
@@ -27,6 +27,8 @@ Conversion used: 1 USD = 6.6977 CNY. Enclosure filament is assumed to come from 
 | Electrical gate | Mechanical design can proceed; electrical compatibility still needs bench testing. |
 | Off-device | The part does not occupy enclosure space. |
 
+Mechanical status does not mean procurement-confirmed. A part may be usable as a conservative Fusion envelope while its exact seller, variant, and price are still open.
+
 ## Sensors and interface electronics
 
 | ID | Selected part and variant | Qty | Unit CNY | Total CNY | Mechanical basis | Status |
@@ -52,7 +54,7 @@ The process probes above control the enclosure geometry. The laboratory-style pr
 | ID | Selected part and variant | Qty | Unit CNY | Total CNY | Mechanical basis | Status |
 |---|---|---:|---:|---:|---|---|
 | PUMP-01 | [Conjoin CJWP12-AB05A](https://conjoinfluid.com/zh-CN/products/cjwp12-ab), 5 V micro diaphragm pump | 1 | 1.20 | 1.20 | Reserve 45 x 25 x 18 mm plus 20 mm barb bends | Ready |
-| VALVE-01 | [Miniature normally-closed valve](https://tao.hooos.com/goods_KQbQZMH3t3gdmKSmpjuJtW-QAnppRSbaOyxQ0MsA.html), 6 V, 3 mm barbs | 3 | 6.98 | 20.94 | Reserve 28 x 15 x 15 mm each plus tube bends | Ready |
+| VALVE-01 | Miniature normally-closed **liquid** valve, 6 V, 3 mm barbs; exact seller part still required | 3 | 6.98 | 20.94 | Reserve 28 x 15 x 15 mm each plus tube bends | **Replace indexed air-valve listing** |
 | PORT-01 | [PP through-panel barbed fitting](https://tao.hooos.com/tag_%E5%AE%9D%E5%A1%94%E6%8E%A5%E5%A4%B4_40.html), sized for 4 mm OD tube | 8 | 1.04 | 8.32 | Cutout and retaining-nut envelope require seller drawing | Part open |
 |  | **Fluid-handling subtotal** |  |  | **30.46** |  |  |
 

@@ -13,7 +13,7 @@ Retrieved or rechecked 2026-09-22 unless stated otherwise.
 - Winters WTS conductivity sensor datasheet: https://www.winters.com.cn/upfile/202401/2024010435321481.pdf
   - Used for exact model WTS-SS-1-1-1401, K=1, 0.1-20,000 uS/cm, 1/2-inch NPT, Pt1000, 13 mm stem, and cable data.
 
-The selected sensor prices in `BOM.csv` are procurement caps. Direct Taobao checkout prices were not verified because automated access to `taobao.com` was blocked by the browser site-safety policy.
+The selected sensor prices in `BOM.csv` are procurement caps. Direct Taobao checkout prices were not verified because automated access to `taobao.com` was blocked by the browser site-safety policy. No other BOM line was verified in a live Taobao checkout either; see `TAOBAO_AVAILABILITY_AUDIT.md`.
 
 ## Mechanical alternatives evaluated
 
@@ -40,6 +40,8 @@ These sources established that threaded process probes are readily available and
 ## Taobao-indexed planning pages
 
 These public indexed pages were retained from the first research pass. They are not a substitute for confirming the exact variant and delivered price in the signed-in Taobao cart.
+
+The miniature-valve indexed result is marketed primarily as an air/vent valve. It is evidence for a mechanical form factor only and does not verify the BOM's required liquid-service valve.
 
 - NodeMCU-32S CP2102: https://tao.hooos.com/tag_cp2102%E9%A9%B1%E5%8A%A8_5.html
 - MSP2807 display: https://tao.hooos.com/goods_bX3dgoQ9hgtokjqkP0QiyxQuQt6-DokRR8IPPe6DqkQHM.html
